@@ -1,0 +1,68 @@
+gpuid: '1'
+seed: 1231
+
+# Dataset
+dataset: splitMNIST
+dataset_path: 'data/binary_mnist/split_mnist.npz'
+use_validation: False
+data_dim: 784
+
+
+# Model & optimizer
+model_name: factorized_ibp_mlp
+model_arch: [400, 10]
+weight_decay: 0.000000001
+optimizer: Adam
+clip_gradients: False
+
+# # Stochastic Nature
+# fine_tuning: False
+# is_deterministic: False
+# batch_size: 32
+# epochs: 20
+# epoch_boundaries: [2]
+# lr_values: [0.01, 0.001]
+
+# deterministic version
+# If True, IBP is ignored.
+is_deterministic: False
+
+# Deterministic
+# epochs: 10
+# lr: 0.001
+# # epoch_boundaries: [2]
+# # lr_values: [0.01, 0.001]
+# pred_ensemble_len: 1
+# batch_size: 32
+
+# Fine Tuning
+fine_tuning: True
+epochs: 10
+batch_size: 32
+lr: 0.001
+pred_ensemble_len: 1
+fine_tune_lr: 0.001
+
+# IBP Information
+prior_alpha: 200.0
+kappa: 0.5
+num_factors: 400
+initial_lambd: 0.6
+final_lambd: 0.6
+lambd_decay_gamma: 0.9
+MAP_W: False
+task_infer_layer: 0
+# num_classes: 10
+# pred_ensemble_len: 50
+task_infer_method: phi_gaussian
+
+# Separate Heads can be used for incremental class and incremental task both
+# since we do task inference at test time.
+# Want to keep separate heads?
+separate_heads: False
+# output_dim: 2
+
+save_params: False
+
+log_dir: data/log/splitMNIST
+result_dir: data/results/split_mnist_results/ 

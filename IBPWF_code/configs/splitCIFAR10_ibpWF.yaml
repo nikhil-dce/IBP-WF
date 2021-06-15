@@ -1,0 +1,71 @@
+gpuid: '1'
+seed: 1235
+
+# Dataset
+dataset: splitCIFAR10
+dataset_path: data/cifar10/split_cifar10.npz
+use_validation: False
+data_dim: [32,32,3]
+
+# Model & Optimizer
+model_name: ResNet20
+
+# Using Adam
+epochs: 5
+lr: 0.001
+batch_size: 10
+
+epochs: 160
+lr: 0.001
+batch_size: 128
+optimizer: Adam
+weight_decay: 0.00001
+is_deterministic: False
+
+# Using SGD
+# epochs: 140
+# batch_size: 128
+# optimizer: SGD
+# weight_decay: 0.00001
+# epoch_boundaries: [80, 120]
+# lr_values: [0.1, 0.01, 0.001]
+# optim_momentum: 0.9
+# is_deterministic: False
+
+# Fine Tuning
+fine_tuning: False
+fine_tuning_epochs: 140
+fine_tuning_lr: 0.0001
+# pred_ensemble_len: 1
+fine_tuning_l2: False
+# epochs: 160
+# batch_size: 128
+# lr: 0.005
+
+
+#############
+momentum: 0.9 
+num_f: 16
+bias: False
+num_classes: 10
+num_layers: 20
+
+# IBP Information
+kappa: 0.5
+num_factors: [100,200,200,200,200]
+prior_alpha: [40., 40., 40., 40., 32.]
+# prior_alpha: [40., 100., 100., 100., 64.]
+
+log_dir: data/log/splitCIFAR10
+result_dir: data/results/cifar10_results/
+
+# Extra
+# initial_lambd: 10.0
+# final_lambd: 0.666
+initial_lambd: 10.0
+final_lambd: 0.666
+lambd_decay_gamma: 0.99
+MAP_W: False
+task_infer_layer: 0
+separate_heads: True
+task_infer_method: phi

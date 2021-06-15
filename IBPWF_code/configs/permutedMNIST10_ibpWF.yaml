@@ -1,0 +1,55 @@
+gpuid: '0'
+# Fix a seed
+seed: 1234
+
+# Dataset
+# bayesian_kumaraswamy: online
+bayesian_kumaraswamy: prior
+dataset: permutedMNIST
+dataset_path: 'data/permuted_mnist_10/continual_task_'
+num_tasks: 10
+use_validation: False
+data_dim: 784
+
+# Model & optimizer
+model_name: factorized_ibp_mlp
+model_arch: [1000, 1000, 100]
+weight_decay: 0.0
+optimizer: Adam
+
+# Stochastic network
+# epochs: 50
+# lr: 0.001
+# batch_size: 128
+
+# Fine Tuning
+fine_tuning: True
+# epochs: 15
+epochs: 20
+batch_size: 64
+lr: 0.001
+pred_ensemble_len: 1
+# fine_tune_lr: 0.001
+
+# deterministic
+is_deterministic: False
+
+# IBP Information
+prior_alpha: 700.0
+# prior_alpha: 200.0
+# incr_alpha: 100.0 
+kappa: 0.6
+num_factors: 1000
+initial_lambd: 0.666
+# initial_lambd: 10.0
+final_lambd: 0.666
+lambd_decay_gamma: 0.99
+MAP_W: False
+task_infer_layer: 0
+separate_heads: True
+clip_gradients: True
+
+save_params: True
+
+log_dir: data/log/permutedMNIST10
+result_dir: data/results/permuted_mnist_10_results/
